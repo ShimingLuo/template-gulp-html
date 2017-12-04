@@ -50,8 +50,10 @@ gulp.task('clean', () => {
 // 处理 *.html
 gulp.task('html', () => {
     return gulp.src(`${DEAL_PATH}/*.html`).pipe(htmlmin({
-        collapseWhitespace: false,
-        removeComments: true
+        removeComments: true, // 清除html注释
+        collapseWhitespace: true, // 压缩 html
+        minifyJS: true,  //压缩页面JS
+        minifyCSS: true  //压缩页面CSS
     })).pipe(gulp.dest(`${BUILD_ROOT_PATH}`));
 });
 // 处理 *.css
